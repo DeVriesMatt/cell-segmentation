@@ -12,9 +12,8 @@ def main(args):
     file_names = [file.split("_")[1].split(".")[0] for file in files if "image" in file]
     print(file_names)
     # for name in file_names:
+    hdf5_fn = h5py.File((os.path.join(args.output_dir, "data.hdf5"), "a"))
     for name in file_names:
-        hdf5_fn = h5py.File((os.path.join(args.output_dir, "data.hdf5"), "a"))
-
         file_path = f"./train/image_{name}.tif"
         mask_path = f"./train/mask_{name}.tif"
         regions_path = f"./train-regions/regions_{name}.json"
