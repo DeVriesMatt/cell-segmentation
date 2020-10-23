@@ -10,7 +10,7 @@ import argparse
 def main(args):
     files = glob.glob(os.path.join(args.input_dir, "*"))
     file_names = [file.split("_")[1].split(".")[0] for file in files if "image" in file]
-
+    print(file_names)
     # for name in file_names:
     for name in file_names:
         hdf5_fn = h5py.File((os.path.join(args.output_dir, "data.hdf5"), "a"))
