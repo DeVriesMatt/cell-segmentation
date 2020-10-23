@@ -11,9 +11,9 @@ def main(args):
     files = glob.glob(os.path.join(args.input_dir, "*"))
     file_names = [file.split("_")[1].split(".")[0] for file in files if "image" in file]
 
-    #for name in file_names:
+    # for name in file_names:
     for name in file_names:
-        hdf5 = h5py.File((os.path.join(args.output_dir, "data.hdf5"), "a"))
+        hdf5_fn = h5py.File((os.path.join(args.output_dir, "data.hdf5"), "a"))
 
         file_path = f"./train/image_{name}.tif"
         mask_path = f"./train/mask_{name}.tif"
@@ -38,9 +38,9 @@ def main(args):
             
         img_stack = np.stack(volume)
         
-        hdf5_train.create_dataset(str(name), data=img_stack, dtype=np.int, chunks=True)
+        hdf5_fn.create_dataset(str(name), data=img_stack, dtype=np.int, chunks=True)
 
-    hdf5.close()
+    hdf5_fn.close()
 
 
 if __name__ == "__main__":
