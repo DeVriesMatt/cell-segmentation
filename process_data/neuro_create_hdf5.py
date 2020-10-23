@@ -13,7 +13,7 @@ def main(args):
 
     #for name in file_names:
     for name in file_names:
-        hdf5 = h5py.File((os.path.join(args.output_dir, "data.hdf5"), "a")
+        hdf5 = h5py.File((os.path.join(args.output_dir, "data.hdf5"), "a"))
 
         file_path = f"./train/image_{name}.tif"
         mask_path = f"./train/mask_{name}.tif"
